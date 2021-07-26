@@ -1,24 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const getElementDims = (arg) => {
-        if (typeof arg !== "undefined") {
-            const dims = document.querySelector(arg).getBoundingClientRect();
-            return dims
-        }
+    function elementInDOM(el, bx) {
 
-    };
+        const getElementDims = (e) => {
+            if (typeof e !== "undefined") {
+                const dims = document.querySelector(e).getBoundingClientRect();
+                return dims
+            };
+        };
 
-    let scroll = window.addEventListener('scroll', (e) => {
-        const dims = getElementDims('#square');
+        const ed = getElementDims(el);
+        const bd = getElementDims(bx);
 
-        if (dims.top < 0 || dims.right < 0 || dims.bottom < 0 || dims.left < 0) {
-            console.log('element not fully in the DOM tree');
+        console.log(`bd.top ${bd.top} ed.top ${ed.top}  bd.left ${bd.left}  ed.left ${ed.left}`)
+
+        if (ed.top <= bd.top || ed.left <= bd.left ||
+            ed.bottom >= bd.bottom || ed.right >= bd.right) {
+            console.log('element not fully accessible in the DOM tree');
             return false
         }
         else {
-            console.log('element fully in the DOM tree');
+            console.log('element fully accessible in the DOM tree');
             return true;
         }
-    });
 
+    }
+
+    elementInDOM('#square', '#box');
 });
