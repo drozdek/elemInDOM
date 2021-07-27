@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (ed.top <= bd.top || ed.left <= bd.left ||
             ed.bottom >= bd.bottom || ed.right >= bd.right) {
-            console.log('element not fully accessible in the DOM tree');
+            console.log('child element not fully accessible in the parent element');
             return false
         }
         else {
-            console.log('element fully accessible in the DOM tree');
+            console.log('child element fully accessible in the parent element');
             return true;
         }
 
