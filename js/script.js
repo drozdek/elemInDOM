@@ -26,5 +26,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    elementInDOM('#square', '#box');
 });
